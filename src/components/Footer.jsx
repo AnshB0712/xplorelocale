@@ -20,19 +20,45 @@ export const Footer = () => {
   XploreLocale
   </GradientText>
   
+  <Col gap={5}>
+    
   <Row gap={3}>
   <p style={{
   fontSize:'var(--body-text)',
   fontWeight:'var(--medium)',
   color: 'var(--lighter-text)'
   }}>Created By:</p>
-  <a href="https://instagram.com/ansh._.713" style={{
+  <a 
+  href="https://instagram.com/ansh._.713" 
+  target="_blank"
+  style={{
   fontSize:'var(--para-text)',
   fontWeight:'var(--medium)',
   color: 'var(--dark-text)'
-  }}>ansh._.713
+  }}>
+  ansh._.713
   </a>
   </Row>
+  
+  <Row gap={3}>
+  <p style={{
+  fontSize:'var(--body-text)',
+  fontWeight:'var(--medium)',
+  color: 'var(--lighter-text)'
+  }}>Source Code:</p>
+  <a 
+  href="https://github.com/AnshB0712/xplorelocale" 
+  target="_blank"
+  style={{
+  fontSize:'var(--para-text)',
+  fontWeight:'var(--medium)',
+  color: 'var(--dark-text)'
+  }}>
+  AnshB0712
+  </a>
+  </Row>
+  
+  </Col>
   
   <Divider 
   space={8}

@@ -25,7 +25,7 @@ export const Input = ({
     styles={()=>({
       root:{
         maxWidth: '320px',
-        margin: '1rem 0'
+        margin: '1rem 0',
       },
       error: {
       fontSize:'var(--para-text)'

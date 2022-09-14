@@ -1,8 +1,11 @@
-import * as React from "react"
-import styled from 'styled-components'
+
+import {SVGcontainer} from '../../layout-components/SVGContainer'
+
 
 const SvgComponent = (props) => (
-  <SVGcontainer>
+  <SVGcontainer 
+  style={{top:'220%'}}
+  >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 600 600"
@@ -10,6 +13,7 @@ const SvgComponent = (props) => (
     style={{
     width:'100%',
     maxWidth:'300px',
+    top: '200%'
     }}
     {...props}
   >
@@ -103,18 +107,5 @@ const SvgComponent = (props) => (
   </p>
   </SVGcontainer>
 )
-
-const SVGcontainer = styled.div`
-     position: relative;
-     display: flex;
-     align-items: center;
-     flex-direction: column;
-     p{
-       font-size: var(--title-text);
-       font-weight: var(--normal);
-       color: var(--lighter-text);
-       text-align: center;
-     }
-`
 
 export default SvgComponent

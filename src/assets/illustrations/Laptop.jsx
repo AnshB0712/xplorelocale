@@ -1,5 +1,6 @@
-import * as React from "react"
-import styled from 'styled-components'
+
+import {SVGcontainer} from '../../layout-components/SVGContainer'
+
 
 const SvgComponent = (props) => (
   <SVGcontainer>
@@ -60,20 +61,6 @@ const SvgComponent = (props) => (
   </p>
   </SVGcontainer>
 )
-
-const SVGcontainer = styled.div`
-     position: relative;
-     display: flex;
-     align-items: center;
-     flex-direction: column;
-     p{
-       font-size: var(--para-text);
-       font-weight: var(--medium);
-       color: var(--light-text);
-       text-align: center;
-       margin-bottom: 5px;
-     }
-`
 
 
 export default SvgComponent
