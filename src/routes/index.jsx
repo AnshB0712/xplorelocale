@@ -28,7 +28,6 @@ export const RoutesTree = () => {
 
     <Route 
     index
-    path='home'
     element={
     <React.Suspense 
     fallback={
