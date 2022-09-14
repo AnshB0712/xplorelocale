@@ -1,6 +1,6 @@
 import {useState,useEffect,useRef} from 'react';
 
-import overlay from '../assets/image/overlay.jpeg'
+import overlay from '../assets/image/overlay.jpg'
 
 import styled from 'styled-components'
 
@@ -114,8 +114,10 @@ const ImagePlaceholder = styled.img`
      display: block;
      filter: blur(30px);
      
+     clip-path: inset(0);
+     
      opacity: ${({loaded}) => loaded?'0':'1'};
-     transition: opacity .25s ease;
+     transition: opacity .2s ease;
      
      border-radius: ${({radius}) => radius ? radius+'px':'var(--md-rad)'};
 `

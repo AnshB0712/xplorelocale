@@ -5,13 +5,14 @@ import {BaseLayout} from '../layout-components/BaseLayout'
 import {SplashScreen} from '../layout-components/SplashScreen'
 import {ProtectedRoute} from '../components/ProtectedRoute'
 
-import SitesPage from '../pages/SitesPage'
+
 import SearchPage from '../pages/SearchPage'
 import SettingPage from '../pages/SettingPage'
 import UploadsPage from '../pages/UploadsPage'
 
 import ErrorPage from '../assets/illustrations/ErrorPage'
 
+const SitesPage = React.lazy(() => import('../pages/SitesPage'))
 const AddSitePage = React.lazy(() => import('../pages/AddSitePage'))
 const IndividualSitePage = React.lazy(() => import('../pages/IndividualSitePage'))
 
@@ -29,7 +30,15 @@ export const RoutesTree = () => {
     index
     path='home'
     element={
+    <React.Suspense 
+    fallback={
+    <SplashScreen
+    allTheWayUp={false}
+    />
+    }
+    >
     <SitesPage />
+    </React.Suspense>
     }
     />
     
