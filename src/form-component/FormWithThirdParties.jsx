@@ -19,10 +19,10 @@ import {useErrorContext} from '../context/ErrorContext'
 export const FormWithThirdParties = ({formDisplayMethods}) => {
   
   const {setErrorAlert} = useErrorContext()
-  const [isFetched,setIsFetched] = useState(false)
+  const [isFetched,setIsFetched] = useState('')
   
   const handleGoogleService = async() => {
-    setIsFetched(true)
+    setIsFetched('google')
     try {
       await GoogleSignIn()
       formDisplayMethods.closeForm()
@@ -30,12 +30,12 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
       setErrorAlert({type:'error',heading:'Google Error',message:e.message})
     }
     finally{
-      setIsFetched(false)
+      setIsFetched('')
     }
   }
   
   const handleFacebookService = async() => {
-    setIsFetched(true)
+    setIsFetched('facebook')
     try {
       await FacebookSignIn()
       formDisplayMethods.closeForm()
@@ -43,7 +43,7 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
       setErrorAlert({type:'error',heading:'Face Error',message:e.message})
     }
     finally{
-      setIsFetched(false)
+      setIsFetched('')
     }
   }
   
@@ -79,7 +79,7 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
     
     <Button
     variant="secondary"
-    loading={isFetched}
+    loading={isFetched==='google'}
     size="lg"
     icon={<Google />}
     style={{width:'100%'}}
@@ -90,6 +90,7 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
     
     <Button
     variant="secondary"
+    loading={isFetched==='facebook'}
     size="lg"
     style={{width:'100%'}}
     icon={<Facebook />}

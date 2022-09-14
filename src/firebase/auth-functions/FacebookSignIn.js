@@ -15,15 +15,11 @@ export const FacebookSignIn = async () => {
 
     const newUser =  await getAdditionalUserInfo(user).isNewUser
     
-    console.log(user)
-    
-    /*
     const {user:{reloadUserInfo:{displayName,email,photoUrl},uid,phoneNumber}} = user
     
     if(newUser){
     await setDoc(doc(db,'Users',uid),{email,displayName,photoUrl,uid,phoneNumber})
      }
-     */
     
   } catch (e) {
     throw new Error(e)
