@@ -3,7 +3,7 @@ import {SVGcontainer} from '../../layout-components/SVGContainer'
 
 
 const SvgComponent = (props) => (
-  <SVGcontainer>
+  <>
   <svg
     id="Layer_2"
     data-name="Layer 2"
@@ -56,10 +56,16 @@ const SvgComponent = (props) => (
     />
     <circle className="cls-6" cx={803.39} cy={527.09} r={19.13} />
   </svg>
-  <p>
+  <p 
+  style={{
+  textAlign:'center',
+  fontSize:'var(--para-text)',
+  color:'var(--light-text)',
+  fontWeight:'var(--medium)'
+  }}>
   Oops!! sorry we do not have any place to show near you.But hey you can upload one or many more for others.
   </p>
-  </SVGcontainer>
+  </>
 )
 
 

@@ -41,8 +41,9 @@ const PlacesComponent = () => {
     disabled={posts.error}
     variant="secondary"
     style={{ 
-    width:'100%',
-    marginTop:'12px' 
+    width:'80%',
+    marginTop:'12px',
+    margin:'15px auto'
     }}
     loading={loadingPosts}
     onClick={() => nextBatch()}
