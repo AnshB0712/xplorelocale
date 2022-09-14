@@ -13,7 +13,7 @@ const navigationData = [
     ID: 0,
     name: 'Home',
     icon: <Home/>,
-    to: '/home'
+    to: '/'
   },
   {
     ID: 1,
