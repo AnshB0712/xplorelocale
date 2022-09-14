@@ -70,8 +70,8 @@ const BottomNavStyle = styled.ul`
       position: fixed;
       bottom: 0;
       left: 0;
-      min-width: 360px;
-      max-width: 400px;
+      min-width: 100%;
+      max-width: 420px;
       list-style: none;
       padding: 8px;
       
