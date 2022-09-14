@@ -1,6 +1,6 @@
 import uniqid from 'uniqid'
 
-import { useState } from 'react'
+import { useState,useRef,useEffect } from 'react'
 import { useAuthContext } from '../../../../../context/AuthContext'
 import { actionReducer } from '../actionReducer'
 
@@ -17,6 +17,13 @@ export const EditReplyInput = ({
   repliedComment_user_name,
   place_id
 }) => {
+  
+  const InputRef = useRef(null)
+  
+  useEffect(() => {
+  if (InputRef)
+  InputRef.current.focus()
+  },[])
   
   const [text,setText] = useState(value)
   const userInfo = useAuthContext()
@@ -39,6 +46,7 @@ export const EditReplyInput = ({
   return (
     <Textarea
     radius={12}
+    ref={InputRef}
     size="xs"
     placeholder={commentState.reply && `Replying to ${repliedComment_user_name}`}
     styles={() => ({
