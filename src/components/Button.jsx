@@ -129,7 +129,7 @@ export const Button = ({
     size={size}
     style={style}
     
-    onClick={() => setTimeout(onClick,150)}
+    onClick={onClick}
     
     loading={loading}
     disabled={loading || disabled}  
