@@ -85,5 +85,4 @@ const SearchCardStyle = styled.div`
       border: 1px solid #dbdbdb;
       border-radius: 10px;
       padding: .5rem;
-      margin: .75rem auto;
 `
