@@ -93,6 +93,7 @@ const AddSitePage = () => {
       createdby: userInfo?.uid,
       createdat: serverTimestamp(),
       likesby: [userInfo?.uid],
+      likescounter: 1,
       status: true,
       geopoints,
       thumbnail: thumbnailUrl[0],
