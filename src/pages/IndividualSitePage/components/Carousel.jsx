@@ -78,6 +78,8 @@ const Slider = styled.div`
      
      overflow: hidden;
      border-radius: 7px;
+     
+     flex-shrink: 0;
 `
 const SlidesWrapper = styled.div`
      position: absolute;
