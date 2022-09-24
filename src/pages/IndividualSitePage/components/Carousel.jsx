@@ -8,9 +8,11 @@ import styled from 'styled-components'
 const Slides = ({url,move}) => {
   return (
     <SlidesWrapper 
+    style={{flexShrink:'0'}}
     move={move}
     >
     <Image
+    style={{flexShrink:'0'}}
     src={url} 
     radius={7}
     />
