@@ -4,6 +4,8 @@ import {FormWithThirdParties} from './FormWithThirdParties'
 import {FormWithEmailSignUp} from './FormWithEmailSignUp'
 import {FormWithEmailSignIn} from './FormWithEmailSignIn'
 
+import { Overlay } from '../layout-components/Overlay'
+
 
 export const AllForms = ({setOpenForms}) => {
   
@@ -11,6 +13,7 @@ export const AllForms = ({setOpenForms}) => {
     type:'thirdParties',
     visible:true
   })
+  
   
   const closeForm = () => setOpenForms(false)
   
@@ -28,33 +31,50 @@ export const AllForms = ({setOpenForms}) => {
     ...p,
     type:'thirdParties',
     visible:true}))
-  
     
-    if(state.type==='thirdParties' && state.visible)
-    return (
-      <FormWithThirdParties 
+	const animateVariants = {
+  	
+  initial:{ y: '100%' },
+  animate:{ y: '0%'}
+  
+  }
+  
+  let content;
+    
+  if(state.type==='thirdParties' && state.visible)
+    content = <FormWithThirdParties 
       formDisplayMethods={{
         closeForm,
         openSignUp,
       }}
+      options={animateVariants}
       />
-      )
     
-    if(state.type==='signIn' && state.visible)
-    return <FormWithEmailSignIn formDisplayMethods={{
+  if(state.type==='signIn' && state.visible)
+    content = <FormWithEmailSignIn
+		options={animateVariants}
+    windowWidth={width} 
+    formDisplayMethods={{
         closeForm,
         openSignUp,
         openThirdParty
       }}/>
     
-    if(state.type==='signUp' && state.visible)
-    return (
-      <FormWithEmailSignUp 
-      formDisplayMethods={{
+  if(state.type==='signUp' && state.visible)
+    content = <FormWithEmailSignUp 
+  	options={animateVariants}
+    windowWidth={width} 
+    formDisplayMethods={{
         closeForm,
         openSignIn,
         openThirdParty,
       }}/>
-      )
+ 
+    return(
+    <>
+    <Overlay />
+    {content}
+    </>
+    )
   
 }

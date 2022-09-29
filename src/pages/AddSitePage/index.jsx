@@ -23,8 +23,6 @@ import {Divider} from '../../layout-components/Divider'
 import {serverTimestamp,setDoc,doc} from "firebase/firestore"; 
 import { db } from "../../firebaseConfig"; 
 
-
-
 import styled from 'styled-components'
 
 const AddSitePage = () => {
@@ -111,10 +109,7 @@ const AddSitePage = () => {
   }
 
   return (
-    <div style={{
-    padding:'0 1rem',
-    overflow:'hidden',
-    }}>
+    <FormConatiner>
     
     <form 
     id="form"
@@ -122,6 +117,7 @@ const AddSitePage = () => {
   handleSubmit(handleFormSubmit)(e)
     }}>
     
+    <GridViewForImageUploader>
     <ImageUploader 
     register={register}
     errors={errors}
@@ -137,13 +133,16 @@ const AddSitePage = () => {
     clearErrors={clearErrors}
     isSubmitSuccessful={isSubmitSuccessful}
     />
+    </GridViewForImageUploader>
     
     <Divider space={16}/>
+    
+    <GridViewForInput>
     
     <Input
     placeholder="Ex. Mahakaleshwar Temple"
     label="Place Name"
-    description="Name which is easily understood by the local residents."
+    description="Name which is easily understood by the local residents or easily searched"
     name="placename"
     error={errors?.placename?.message}
     register={register}
@@ -172,7 +171,9 @@ const AddSitePage = () => {
     setError={setError}
     clearErrors={clearErrors}
     />
-  
+    
+    </GridViewForInput>
+    
     <MultiSelectBadges
     register={register}
     setValue={setValue}
@@ -185,7 +186,7 @@ const AddSitePage = () => {
     form="form"
     style={{
     width:'100%',
-    boxSizing:'border-box'
+    margin: '0 auto'
     }}
     >
     Submit Details
@@ -201,9 +202,38 @@ const AddSitePage = () => {
     isSubmitting={isSubmitting}
     />}
     
-    </div>
+    </FormConatiner>
   )
 }
 
+
+const GridViewForImageUploader = styled.div`
+	display: grid;
+	gap: .25rem; 
+	
+	@media(min-width: 900px){
+	grid-template-columns: 1fr 1fr;
+	place-items: center;
+	}
+`
+
+const FormConatiner = styled.div`
+		overflow: hidden;
+    
+    display: grid;
+    place-items:center;
+    
+		width: 100%;
+`
+
+const GridViewForInput = styled.div`
+		display: grid;
+    
+    @media(min-width: 900px){
+    
+    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+   
+    }
+`
 
 export default AddSitePage

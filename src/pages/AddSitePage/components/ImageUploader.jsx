@@ -33,7 +33,7 @@ export const ImageUploader = ({register,errors,clearErrors,setError,isSubmitSucc
     <Wrapper>
     
     <Image 
-    height={180}
+    height={url ? "100%":180}
     radius={3}
     src={url}
     withPlaceholder

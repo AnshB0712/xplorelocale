@@ -43,10 +43,7 @@ const navigationData = [
 
 export const BottomNavigation = () =>
 {
-  
-  return(
-    <BottomNavStyle>
-    {navigationData.map(({ID,name,icon,to},i) => {
+	const content = navigationData.map(({ID,name,icon,to},i) => {
       return (
       <li key={ID}>
       <NavLink 
@@ -57,21 +54,28 @@ export const BottomNavigation = () =>
       </NavLink>
       </li>
       )
-    })}
+    })
+  
+  return(
+ 
+    <BottomNavStyle>
+    {content}
     </BottomNavStyle>
+  
     )
 }
 
 
 const BottomNavStyle = styled.ul`
-
-    *{transition :transform .25s;}
     
       position: fixed;
       bottom: 0;
       left: 0;
-      min-width: 100%;
+      
+      width: 100%;
+      
       max-width: 420px;
+      
       list-style: none;
       padding: 8px;
       
@@ -85,9 +89,24 @@ const BottomNavStyle = styled.ul`
       border: 1px solid #dbdbd8;
       border-top-right-radius: 15px;
       border-top-left-radius: 15px;
+      
+      transition: all .5s ease;
+      
+      &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 3px;
+      transform: translateY(-50%);
+      height: 10%;
+      width: 6px;
+      background: #737373;
+      border-radius: 1rem;
+      
+      display: none;
+      }
     
-    
-    li{
+      li{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -117,4 +136,27 @@ const BottomNavStyle = styled.ul`
       
       }
     }
+    
+      @media(min-width: 1000px){
+      
+      flex-direction: column;
+      width: 5%;
+      
+      border-radius: 2.25rem;
+      
+      padding: 1rem;
+      
+      
+     	top: 50%;
+     	left: 5px;
+     	transform:translate(-90%,-50%);
+     	
+     	&:hover{
+     	transform: translate(0%,-50%);
+     	}
+     
+     	
+     	&::before{
+     	display: block;
+     	}
 `

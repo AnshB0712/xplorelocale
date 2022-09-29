@@ -14,7 +14,7 @@ import {Divider} from  '../layout-components/Divider';
 import styled from 'styled-components'
 import {motion} from 'framer-motion'
 
-export const FormWithEmailSignUp = ({formDisplayMethods}) => {
+export const FormWithEmailSignUp = ({formDisplayMethods,options}) => {
   
   const [isFetched,
     setIsFetched] = useState(false)
@@ -49,9 +49,8 @@ export const FormWithEmailSignUp = ({formDisplayMethods}) => {
   return(
     <FormContainer
     transition={{type:'tween'}}
-    initial={{ y: '100%' }}
-    animate={{ y: '0%' }}
-    exit={{ y: '100%' }}
+    initial={options.initial}
+    animate={options.animate}
     >
     
     <p style={{
@@ -190,4 +189,12 @@ const FormContainer = styled(motion.div)`
      
      width: min(100vw,380px);
      z-index: var(--cloud-7);
+
+		 @media(min-width: 1000px){
+    
+     	bottom: 25%;
+     	left: 35%;
+     	
+     	transform:translate(-50%,-50%);
+     }
 `

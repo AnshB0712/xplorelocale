@@ -31,9 +31,9 @@ export const MultiImageUploader = ({register,errors,clearErrors,setError,isSubmi
   const previews = urls?.map((url,i) => (
     <Image 
     key={i}
-    radius={3}
-    height={80}
-    width={105}
+    radius={5}
+    width="100%"
+    height="100%"
     src={url}
     withPlaceholder
     />
@@ -47,9 +47,19 @@ export const MultiImageUploader = ({register,errors,clearErrors,setError,isSubmi
   return (
     <Wrapper>
     
+    {
+    Boolean(urls.length)
+		?
     <GridView>
     {previews}
     </GridView>
+    :
+    <Image 
+    height={180}
+    radius={3}
+    src={null} 
+    withPlaceholder/>
+    }
     
     <Row style={{
       display: 'grid',
@@ -125,8 +135,7 @@ const Wrapper = styled.div`
 `
 
 const GridView = styled.div`
-     margin: 0 auto;
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
      gap: .5rem;
 `

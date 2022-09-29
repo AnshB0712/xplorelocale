@@ -16,11 +16,15 @@ import {GoogleSignIn} from '../firebase/auth-functions/GoogleSignIn'
 import {FacebookSignIn} from '../firebase/auth-functions/FacebookSignIn'
 import {useErrorContext} from '../context/ErrorContext'
 
-export const FormWithThirdParties = ({formDisplayMethods}) => {
+export const FormWithThirdParties = ({
+	formDisplayMethods,
+	options,
+	windowWidth
+}) => {
   
   const {setErrorAlert} = useErrorContext()
   const [isFetched,setIsFetched] = useState('')
-  
+
   const handleGoogleService = async() => {
     setIsFetched('google')
     try {
@@ -46,13 +50,12 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
       setIsFetched('')
     }
   }
-  
+
   return(
     <FormContainer
     transition={{type:'tween'}}
-    initial={{ y: '100%' }}
-    animate={{ y: '0%' }}
-    exit={{ y: '100%' }}
+    initial={options.initial}
+    animate={options.animate}
     >
     
     <p
@@ -127,6 +130,7 @@ export const FormWithThirdParties = ({formDisplayMethods}) => {
     </Button>
     
     </FormContainer>
+
     )
 }
 
@@ -140,5 +144,13 @@ const FormContainer = styled(motion.div)`
      padding: 2rem;
      
      z-index: var(--cloud-7);
-     width: min(100vw,380px);
+     width: min(100vw,420px);
+     
+     @media(min-width: 1000px){
+    
+     	bottom: 25%;
+     	left: 35%;
+     	
+     	transform:translate(-50%,-50%);
+     }
 `

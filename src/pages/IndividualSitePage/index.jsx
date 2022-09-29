@@ -37,7 +37,9 @@ const IndividualSitePage = () => {
   if(data)
   return (
    <>
-    
+   
+   <GridViewForDekstops>
+   
    <Carousel
    images={data.otherimages}
     /> 
@@ -49,6 +51,8 @@ const IndividualSitePage = () => {
     labels={data.labels}
     likescounter={data.likescounter}
     />
+    
+    </GridViewForDekstops>
     
     <Tabs 
     grow
@@ -81,5 +85,17 @@ const IndividualSitePage = () => {
     </>
     )
 }
+
+const GridViewForDekstops = styled.div`
+		 display: grid;
+		 
+		 @media(min-width: 900px){
+		 	grid-template-columns: 1fr 1fr
+		 	;
+		 	align-items: center;
+		 	justify-items: center;
+		 	
+		 }
+`
 
 export default IndividualSitePage
