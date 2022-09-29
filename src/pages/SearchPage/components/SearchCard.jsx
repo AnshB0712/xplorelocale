@@ -78,7 +78,8 @@ export const SearchCard = ({info}) => {
 
 const SearchCardStyle = styled.div`
       display: flex;
-      min-width: 90%;
+      width: 90%;
+      max-width: 500px;
       align-items: center;
       flex-direction: column;
       justify-content: space-between;

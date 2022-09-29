@@ -8,11 +8,9 @@ import styled from 'styled-components'
 const Slides = ({url,move}) => {
   return (
     <SlidesWrapper 
-    style={{flexShrink:'0'}}
     move={move}
     >
     <Image
-    style={{flexShrink:'0'}}
     src={url} 
     radius={7}
     />
@@ -69,7 +67,9 @@ export const Carousel = ({images}) => {
 const Slider = styled.div`
      position: relative;
      
+     width: 100%;
      max-width: 600px;
+     
      height: 23rem;
      max-height: 338px;
      
@@ -79,7 +79,7 @@ const Slider = styled.div`
      overflow: hidden;
      border-radius: 7px;
      
-     flex-shrink: 0;
+
 `
 const SlidesWrapper = styled.div`
      position: absolute;

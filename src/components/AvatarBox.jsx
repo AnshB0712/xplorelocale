@@ -1,5 +1,6 @@
 import {useAuthContext} from '../context/AuthContext'
 import {useLocationContext} from '../context/LocationContext'
+import {useWindowSize} from '../hooks/useWindowSize'
 
 import {findStateAbbreviation} from '../utils/findStateAbbreviation'
 
@@ -7,6 +8,7 @@ import {Row} from '../layout-components/Row'
 import {Col} from '../layout-components/Col'
 import {Image} from '../components/Image'
 import {Button} from '../components/Button'
+import { GradientText } from './GradientText'
 
 import newuser from '../assets/image/newuser.jpeg'
 
@@ -57,6 +59,8 @@ export const AvatarBox = ({setOpenForms}) => {
   
   const userInfo = useAuthContext()
   
+  const {width} = useWindowSize()
+  
   return(
     <Container>
     <Row>
@@ -74,6 +78,14 @@ export const AvatarBox = ({setOpenForms}) => {
    <LoactionDisplay />
     
    </Col>
+   
+   { 
+   width > 1000 
+   && 
+   <GradientText>
+   XploreLocale
+   </GradientText>
+   }
     
    { 
    userInfo

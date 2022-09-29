@@ -91,6 +91,12 @@ const GlobalStyles = createGlobalStyle`
     .ripple-container.active::after{
       animation: ${ripple} .75s linear forwards;
     }
+    
+    @media(min-width: 1000px){
+    html{
+    	font-size: 90%;
+    }
+    }
 `
 
 export default GlobalStyles

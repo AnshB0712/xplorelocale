@@ -39,5 +39,9 @@ export const BaseLayout = () => {
 const AppWrapper = styled.div`
      padding: .25rem .5rem;
      padding-bottom: 6rem;
-    overflow: hidden;
+     overflow: hidden;
+     
+     @media(min-width: 1000px){
+     padding: 1.5rem 6rem;
+    }
 `

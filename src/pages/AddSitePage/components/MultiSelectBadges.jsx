@@ -6,9 +6,10 @@ export const MultiSelectBadges = ({register,setValue}) => {
       <MultiSelect
       data={Badges}
       radius={8}
+      style={{margin:'0 auto'}}
       styles={()=>({
       root:{
-        maxWidth: '320px',
+    		maxWidth: '500px',
         margin: '.5rem 0',
       },
       label:{

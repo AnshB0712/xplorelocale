@@ -30,7 +30,7 @@ import {
 } from 'framer-motion'
 
 
-export const FormWithEmailSignIn = ({formDisplayMethods}) => {
+export const FormWithEmailSignIn = ({formDisplayMethods,options}) => {
 
   const [isFetched,
     setIsFetched] = useState(false)
@@ -69,10 +69,9 @@ export const FormWithEmailSignIn = ({formDisplayMethods}) => {
 
   return(
     <FormContainer
-      transition={ { type: 'tween' }}
-      initial={ { y: '100%' }}
-      animate={ { y: '0%' }}
-      exit={ { y: '100%' }}
+    transition={{type:'tween'}}
+    initial={options.initial}
+    animate={options.animate}
       >
     <p style={ {
         fontSize: '35px',
@@ -191,4 +190,13 @@ padding: 2rem;
 
 width: min(100vw,380px);
 z-index: var(--cloud-7);
+
+
+@media(min-width: 1000px){
+    
+     	bottom: 25%;
+     	left: 35%;
+     	
+     	transform:translate(-50%,-50%);
+     }
 `

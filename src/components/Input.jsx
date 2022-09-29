@@ -24,7 +24,7 @@ export const Input = ({
     <TextInput
     styles={()=>({
       root:{
-        maxWidth: '320px',
+        maxWidth: '500px',
         margin: '1rem 0',
       },
       error: {
