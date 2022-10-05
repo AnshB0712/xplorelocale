@@ -53,7 +53,6 @@ export const AllForms = ({setOpenForms}) => {
   if(state.type==='signIn' && state.visible)
     content = <FormWithEmailSignIn
 		options={animateVariants}
-    windowWidth={width} 
     formDisplayMethods={{
         closeForm,
         openSignUp,
@@ -63,7 +62,7 @@ export const AllForms = ({setOpenForms}) => {
   if(state.type==='signUp' && state.visible)
     content = <FormWithEmailSignUp 
   	options={animateVariants}
-    windowWidth={width} 
+
     formDisplayMethods={{
         closeForm,
         openSignIn,

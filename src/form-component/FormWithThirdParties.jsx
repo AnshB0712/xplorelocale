@@ -19,7 +19,6 @@ import {useErrorContext} from '../context/ErrorContext'
 export const FormWithThirdParties = ({
 	formDisplayMethods,
 	options,
-	windowWidth
 }) => {
   
   const {setErrorAlert} = useErrorContext()
