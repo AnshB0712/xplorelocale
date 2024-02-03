@@ -35,7 +35,7 @@ const SiteLocation = ({ placename, cityname }) => {
   );
 };
 
-export function SiteCard({ geoInfo }) {
+export function WeatherCard({ geoInfo }) {
   return (
     <CardFigure>
       <Image src={geoInfo.location.icon} height={190} />

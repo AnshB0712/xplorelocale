@@ -1,5 +1,13 @@
 import React, { useReducer, useState } from "react";
-import { ActionIcon, Stack, Group, Table, Button, Modal } from "@mantine/core";
+import {
+  ActionIcon,
+  Stack,
+  Group,
+  Table,
+  Button,
+  Modal,
+  Checkbox,
+} from "@mantine/core";
 import {
   IconSortAscendingLetters,
   IconAdjustments,
@@ -82,12 +90,14 @@ const applyFilters = (data, filters) => {
 };
 
 // Function to render table rows
-const renderTableRows = (users, onEdit, onDelete) => {
+const renderTableRows = (users, onEdit, onDelete, columnView) => {
   return users.map((user) => (
     <Table.Tr key={user.name}>
       <Table.Td>{user.name}</Table.Td>
-      <Table.Td>{user.createdAt}</Table.Td>
-      <Table.Td>{user.status ? "Active" : "InActive"}</Table.Td>
+      {columnView.createdAt && <Table.Td>{user.createdAt}</Table.Td>}
+      {columnView.status && (
+        <Table.Td>{user.status ? "Active" : "InActive"}</Table.Td>
+      )}
       <Table.Td>
         <Group gap={5}>
           <ActionIcon
@@ -117,6 +127,10 @@ const renderTableRows = (users, onEdit, onDelete) => {
 
 // DataTable component
 export const DataTable = ({ data }) => {
+  const [columnView, setColumnView] = useState({
+    createdAt: true,
+    status: true,
+  });
   const [modalState, setModalState] = useState({
     isOpen: false,
     type: "",
@@ -136,7 +150,8 @@ export const DataTable = ({ data }) => {
       usersDispatch({
         type: "DELETE",
         payload: { id },
-      })
+      }),
+    columnView
   );
 
   const openModal = (type, id) => {
@@ -161,12 +176,34 @@ export const DataTable = ({ data }) => {
         <Group justify={"space-between"} px={5}>
           <Button onClick={() => openModal("add")}>Add User</Button>
 
+          <>
+            <Group>
+              <Checkbox
+                checked={columnView.createdAt}
+                onChange={(event) =>
+                  setColumnView((p) => ({
+                    ...p,
+                    createdAt: event.target.checked,
+                  }))
+                }
+                label="CreatedAt"
+              />
+              <Checkbox
+                checked={columnView.status}
+                onChange={(event) =>
+                  setColumnView((p) => ({ ...p, status: event.target.checked }))
+                }
+                label="Status"
+              />
+            </Group>
+          </>
+
           <Group gap={8}>
             <DatePickerInput
               size="xs"
               clearable
               value={filters.filteredCreatedAt}
-              placeholder="Filter via CreateAt"
+              placeholder="Filter CreateAt"
               onChange={(e) =>
                 filtersDispatch({
                   type: "FILTERED_CREATED_AT",
@@ -202,8 +239,8 @@ export const DataTable = ({ data }) => {
           <Table.Thead>
             <Table.Tr>
               <Table.Th>Name</Table.Th>
-              <Table.Th>CreatedAt</Table.Th>
-              <Table.Th>Status</Table.Th>
+              {columnView.createdAt && <Table.Th>CreatedAt</Table.Th>}
+              {columnView.status && <Table.Th>Status</Table.Th>}
               <Table.Th>Actions</Table.Th>
             </Table.Tr>
           </Table.Thead>

@@ -2,15 +2,15 @@ import { useLocationContext } from "../../../context/LocationContext";
 
 import { Button } from "../../../components/Button";
 import { Grid } from "../../../layout-components/Grid";
-import { SiteCard } from "./SiteCard";
 
 import Astronaut from "../../../assets/illustrations/Astronaut";
 import Laptop from "../../../assets/illustrations/Laptop";
 import Refresh from "../../../assets/icons/Refresh";
 
 import styled from "styled-components";
+import { WeatherCard } from "./WeatherCard";
 
-const PlacesComponent = ({ geoInfo }) => {
+const WeatherComponent = ({ geoInfo }) => {
   if (geoInfo.error)
     return (
       <ErrorContainer>
@@ -21,7 +21,7 @@ const PlacesComponent = ({ geoInfo }) => {
   return (
     <>
       <Grid>
-        <SiteCard geoInfo={geoInfo} />
+        <WeatherCard geoInfo={geoInfo} />
       </Grid>
     </>
   );
@@ -51,7 +51,7 @@ const ErrorComponent = ({ initiateRender, geoInfo }) => {
   );
 };
 
-const NativeLocationPlaces = () => {
+const WeatherSection = () => {
   const { initiateRender, geoInfo } = useLocationContext();
 
   const district = geoInfo.location.name;
@@ -77,7 +77,7 @@ const NativeLocationPlaces = () => {
       </p>
 
       {!geoInfo.error ? (
-        district && <PlacesComponent geoInfo={geoInfo} />
+        district && <WeatherComponent geoInfo={geoInfo} />
       ) : (
         <ErrorComponent geoInfo={geoInfo} initiateRender={initiateRender} />
       )}
@@ -99,4 +99,4 @@ const ErrorContainer = styled.figure`
   padding: 0.5rem;
 `;
 
-export default NativeLocationPlaces;
+export default WeatherSection;
