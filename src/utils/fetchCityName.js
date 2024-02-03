@@ -2,10 +2,10 @@ import axios from 'axios'
 
 export const fetchCityName = async (lat,long) => {
   try {
-  const {data:{address}} = await axios.get(
-    `https://us1.locationiq.com/v1/reverse?key=${import.meta.env.VITE_GEO_KEY}&lat=${lat}&lon=${long}&format=json`
+  const {data:{location,current:{condition}}} = await axios.get(
+    `https://api.weatherapi.com/v1/current.json?q=${lat},${long}&key=${import.meta.env.VITE_GEO_KEY}`
     )
-    return address
+    return {...location,...condition}
   } catch (e) {
     throw new Error(e)
   }

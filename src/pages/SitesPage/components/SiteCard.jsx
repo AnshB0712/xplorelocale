@@ -24,7 +24,7 @@ const SiteLocation = ({placename,cityname}) => {
     fontWeight:'var(--bold)',
     color:'var(--dark-text)',
     }}
-    >{placename}</p>
+    >{cityname}</p>
     <Row gap={2}>
     <Location/>
     <p
@@ -33,78 +33,44 @@ const SiteLocation = ({placename,cityname}) => {
     fontWeight:'var(--medium)',
     color:'var(--lighter-text)',
     }}
-    >{cityname}</p>
+    >{placename}</p>
     </Row>
     </Col>
     )
 }
 
-const SitePraiseCounter = ({likesby,place_id,likescounter}) => {
-  
-  const userInfo = useAuthContext()
-  
-  const isAlreadyLiked = likesby.includes(userInfo?.uid)
-  
-  return (
-    <Row 
-    style={{
-      padding:'7px',
-      margin: '8px 0'
-    }}>
-  
-    <LikeActionButton 
-    likescounter={likescounter}
-    initialState={isAlreadyLiked}
-    place_id={place_id}
-    />
-  
-    </Row>
-    )
-}
-
-const ActionButtons = ({place_id}) => {
-  
-  const navigate = useNavigate()
-  
-  return(
-    <ButtonContainer>
-    
-    <SaveActionButton 
-    place_id={place_id}
-    />
-    
-    <Button 
-    onClick={() => navigate(`/site/${place_id}`)}
-    size="sm">
-    Show Details
-    </Button>
-    
-    </ButtonContainer>
-    )
-}
-
-export function SiteCard({info}) {
-  
+export function SiteCard({geoInfo}) {
   return (
   <CardFigure>
     <Image 
-     src={info.thumbnail}
+     src={geoInfo.location.icon}
      height={190}/>
   
     <SiteDetails>
       <SiteLocation 
-      cityname={info.cityname}
-      placename={info.placename}
+      cityname={geoInfo.location.name}
+      placename={geoInfo.location.region}
       />
-      <SitePraiseCounter 
-      likesby={info.likesby}
-      place_id={info.place_id}
-      likescounter={info.likescounter}
-      />
+      
+    <Col alignment='start'>
+    <p
+    style={{
+    fontSize:'var(--para-text)',
+    fontWeight:'var(--medium)',
+    color:'var(--lighter-text)',
+    }}
+    >Weather</p>
+    <p
+    style={{
+    fontSize:'var(--title-text)',
+    fontWeight:'var(--bold)',
+    color:'var(--dark-text)',
+    }}
+    >{geoInfo.location.text}</p>
+    </Col>
     </SiteDetails>
-  
-    <ActionButtons 
-    place_id={info.place_id} />
+    
+
   </CardFigure>
   );
 }

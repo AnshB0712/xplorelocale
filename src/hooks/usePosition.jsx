@@ -1,10 +1,8 @@
 import { useState,useEffect } from 'react'
 import { useForcedRender } from './useForcedRender'
-
 import { fetchCityName } from '../utils/fetchCityName'
 
-import { auth,db } from '../firebaseConfig'
-import { updateDoc,doc } from 'firebase/firestore'
+
 
 export const usePosition = (setterFunction) => {
   
@@ -36,12 +34,7 @@ export const usePosition = (setterFunction) => {
     }))
     .finally(() => setLoading(false))
     
-    if(auth.currentUser){
-    updateDoc(doc(db,'Users',auth.currentUser.uid),{location:[coords.latitude,coords.longitude]})
-    .then(res => res)
-    .catch(e => console.log(e))
-    }
-    }
+  }
     
   const onError = (e) => { 
     setterFunction(prev => ({

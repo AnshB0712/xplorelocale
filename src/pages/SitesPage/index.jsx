@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
 import NativeLocationPlaces from './components/NativeLocationPlaces'
-import RecommendedPlaces from './components/RecommendedPlaces'
-import {SiteCard} from './components/SiteCard'
+import {DataTable} from './components/DataTable'
 
-import {Footer} from '../../components/Footer'
-import {Divider} from '../../layout-components/Divider'
+const data = [
+  { name: 'John Doe', status: 'Active', createdAt: '02/4/2024' },
+  { name: 'Alice Smith', status: 'Inactive', createdAt: '02/1/2024' },
+];
+
 
 
 const SitesPage = () => {
@@ -13,11 +15,7 @@ const SitesPage = () => {
   return (
     <>
     <NativeLocationPlaces />
-    <RecommendedPlaces />
-    
-    <Divider />
-    
-    <Footer />
+    <DataTable data={data}/>
     </>
     )
 }

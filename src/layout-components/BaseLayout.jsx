@@ -1,14 +1,7 @@
 import { useState } from 'react'
-
 import {Outlet} from 'react-router-dom'
-
 import {AvatarBox} from '../components/AvatarBox'
-import {BottomNavigation} from '../components/BottomNavigation'
-
 import {AllForms} from '../form-component/AllForms'
-
-
-
 import styled from 'styled-components'
 
 export const BaseLayout = () => {
@@ -23,8 +16,7 @@ export const BaseLayout = () => {
     <AppWrapper>
     <Outlet />
     </AppWrapper>
-    
-    <BottomNavigation />
+  
     
     {
       openForms 

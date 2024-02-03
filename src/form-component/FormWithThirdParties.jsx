@@ -3,7 +3,6 @@ import {useState,useEffect} from 'react'
 import X from '../assets/icons/Close'
 
 import Google from "../assets/icons/Google";
-import Facebook from "../assets/icons/Facebook";
 
 import {Button} from '../components/Button'
 import {Col} from '../layout-components/Col'
@@ -11,17 +10,15 @@ import {Col} from '../layout-components/Col'
 import styled from 'styled-components'
 
 import {motion} from 'framer-motion'
-
 import {GoogleSignIn} from '../firebase/auth-functions/GoogleSignIn'
-import {FacebookSignIn} from '../firebase/auth-functions/FacebookSignIn'
-import {useErrorContext} from '../context/ErrorContext'
+
 
 export const FormWithThirdParties = ({
 	formDisplayMethods,
 	options,
 }) => {
   
-  const {setErrorAlert} = useErrorContext()
+  
   const [isFetched,setIsFetched] = useState('')
 
   const handleGoogleService = async() => {
@@ -30,26 +27,13 @@ export const FormWithThirdParties = ({
       await GoogleSignIn()
       formDisplayMethods.closeForm()
     } catch (e) {
-      setErrorAlert({type:'error',heading:'Google Error',message:e.message})
+      console.log(e)
     }
     finally{
       setIsFetched('')
     }
   }
   
-  const handleFacebookService = async() => {
-    setIsFetched('facebook')
-    try {
-      await FacebookSignIn()
-      formDisplayMethods.closeForm()
-    } catch (e) {
-      setErrorAlert({type:'error',heading:'Face Error',message:e.message})
-    }
-    finally{
-      setIsFetched('')
-    }
-  }
-
   return(
     <FormContainer
     transition={{type:'tween'}}
@@ -88,17 +72,6 @@ export const FormWithThirdParties = ({
     onClick={handleGoogleService}
     >
     Continue with Google
-    </Button>
-    
-    <Button
-    variant="secondary"
-    loading={isFetched==='facebook'}
-    size="lg"
-    style={{width:'100%'}}
-    icon={<Facebook />}
-    onClick={handleFacebookService}
-    >
-    Continue with Facebook
     </Button>
     
     <Button

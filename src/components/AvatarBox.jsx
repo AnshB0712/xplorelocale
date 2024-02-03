@@ -40,11 +40,11 @@ const LoactionDisplay = () => {
     'loading...'
     : 
     `${
-    geoInfo?.location?.state_district || 
+    geoInfo?.location?.name || 
     'Not Available'
     },
     ${
-    findStateAbbreviation(geoInfo?.location?.state) 
+    findStateAbbreviation(geoInfo?.location?.region) 
     || 
     ''
     }`
@@ -64,28 +64,9 @@ export const AvatarBox = ({setOpenForms}) => {
   return(
     <Container>
     <Row>
-    
-    <Col alignment='start'>
-    
-    <p
-    style={{
-    fontSize:'var(--para-text)',
-    fontWeight:'var(--medium)',
-    color:'var(--lighter-text)',
-    }}
-    >{`Hii,${userInfo?.displayName || 'Guest'}!`}</p>
-    
+  
    <LoactionDisplay />
-    
-   </Col>
-   
-   { 
-   width > 1000 
-   && 
-   <GradientText>
-   XploreLocale
-   </GradientText>
-   }
+
     
    { 
    userInfo

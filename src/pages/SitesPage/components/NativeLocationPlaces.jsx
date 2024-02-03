@@ -13,63 +13,22 @@ import Refresh from '../../../assets/icons/Refresh'
 
 import styled from 'styled-components'
 
-
-
-
-const PlacesComponent = ({district}) => {
+const PlacesComponent = ({geoInfo}) => {
   
-  const { 
-    posts,
-    nextBatch,
-    loadingPosts 
-  } = useInfiniteScroll(
-    "cityname",district
-    )
-  
-  if(!posts.data)
-  return(
-  <PageWrapper
-  style={{
-  display:'grid',
-  placeItems:'center'
-  }}>
-  <Loader />
-  </PageWrapper>
-  )
-  
-  if(!posts.data.length)
+  if(geoInfo.error)
   return(
   <ErrorContainer>
   <Laptop />
   </ErrorContainer>
   )
   
-  if(posts.data.length)
   return (
     <>
     <Grid>
-    { posts.data.map(
-      doc => <SiteCard 
-      key={doc.place_id} 
-      info={doc} 
+      <SiteCard 
+      geoInfo={geoInfo}
       />
-      )
-    }
     </Grid>
-    <Button
-    size="md"
-    disabled={posts.error}
-    variant="secondary"
-    style={{ 
-    width:'80%',
-    marginTop:'12px',
-    margin:'15px auto'
-    }}
-    loading={loadingPosts}
-    onClick={() => nextBatch()}
-    >
-    { posts.error || 'Load More' }
-    </Button>
     </>
     )
   }
@@ -106,7 +65,7 @@ const NativeLocationPlaces = () => {
     geoInfo
   } = useLocationContext()
   
-  const district = geoInfo.location.state_district
+  const district = geoInfo.location.name
   
   return (
     <PageWrapper>
@@ -115,20 +74,20 @@ const NativeLocationPlaces = () => {
       fontSize:'var(--pagetitle-text)',
       color:'var(--dark-text)',
     }}
-    >Places near you</p>
+    >Weather around you</p>
     <p
     style={{
       fontSize:'var(--para-text)',
       color:'var(--light-text)',
       marginBottom:'1rem'
     }}
-    >Easier for you to check them out!</p>
+    >So you could go out Prepared.</p>
     
     {
     !geoInfo.error
     ? 
     district && <PlacesComponent 
-    district={district}
+    geoInfo={geoInfo}
     />
     :
     <ErrorComponent 
